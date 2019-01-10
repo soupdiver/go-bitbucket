@@ -167,6 +167,9 @@ func (c *Client) execute(method string, urlStr string, text string) (interface{}
 
 	c.authenticateRequest(req)
 	result, err := c.doRequest(req, false)
+	if err != nil {
+		return nil, err
+	}
 
 	//autopaginate.
 	resultMap, isMap := result.(map[string]interface{})
